@@ -1,5 +1,7 @@
 # SmartKeys
 
+> **Note:** Alt code features (`smartPrint`, `sendAltCode`, `ensureNumLock`) are **Windows only**. Basic keyboard functions (`print`, `sendKeyStroke`, `sendKeyPress`) work on any OS.
+
 Layout-independent USB keyboard library for **Digispark** (ATtiny85).  
 A standalone replacement for DigiKeyboard with Windows Alt code support and automatic NumLock detection.
 
