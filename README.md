@@ -93,16 +93,25 @@ Combine with `|`: `SmartKeys.sendKeyStroke(key, MOD_CONTROL_LEFT | MOD_SHIFT_LEF
 
 ## Custom Escape List
 
+The library uses `print()` (US keyboard scancodes) for regular characters and Alt codes for "escape list" characters. The built-in default list covers `'` `-` `/` `:` `|` — these are symbols that commonly produce wrong output on non-US keyboard layouts.
+
+**If a character doesn't type correctly on your target system, add it to the escape list.** Find the Alt code for any character at [alt-codes.net](https://www.alt-codes.net/), then add it as an `AltEntry`:
+
 ```cpp
 AltEntry myList[] = {
-  {"124", '|'},
-  {"64",  '@'},
-  {"126", '~'}
+  {"124", '|'},   // Alt+124 = |
+  {"64",  '@'},   // Alt+64  = @
+  {"126", '~'},   // Alt+126 = ~
+  {"92",  '\\'},  // Alt+92  = backslash
+  {"59",  ';'},   // Alt+59  = ;
+  {"61",  '='},   // Alt+61  = =
 };
 
-SmartKeys.setEscapeList(myList, 3);
+SmartKeys.setEscapeList(myList, 6);
 SmartKeys.smartPrint("user@host ~/path");
 ```
+
+> **Tip:** Start with `print()` and check which symbols come out wrong on the target keyboard layout. Only add those to your escape list — fewer entries = faster typing and less flash usage.
 
 ## License
 
